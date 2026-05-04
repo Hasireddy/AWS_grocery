@@ -19,6 +19,8 @@ from dateutil import parser
 load_dotenv()
 db = SQLAlchemy()
 
+
+
 DEPLOYMENT_ENV = os.getenv("DEPLOYMENT_ENV", "local")
 GITHUB_USERNAME = "AlejandroRomanIbanez"
 REPO_NAME = "AWS_grocery"
@@ -30,6 +32,8 @@ GITHUB_RELEASE_URL = f"https://github.com/{GITHUB_USERNAME}/{REPO_NAME}/releases
 
 class Config:
     """App configuration variables."""
+    SECRET_KEY = os.getenv("SECRET_KEY", "dev-secret")
+    JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY", "dev-jwt-secret")
     POSTGRES_USER = os.getenv("POSTGRES_USER", "postgres")
     POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD", "postgres")
     POSTGRES_DB = os.getenv("POSTGRES_DB", "postgres")
